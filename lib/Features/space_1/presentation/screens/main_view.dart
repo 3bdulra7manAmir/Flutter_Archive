@@ -5,10 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:test_area/Config/router/app_router.dart';
 import 'package:test_area/Core/constants/app_colors.dart';
 import 'package:test_area/Core/widgets/buttons/custom_button.dart';
-import 'package:test_area/Features/main/presentation/controllers/main_view_con/notifier_provider.dart';
-import 'package:test_area/Features/main/presentation/controllers/main_view_con/riverpod_info_provider.dart';
-import 'package:test_area/Features/main/presentation/widgets/custom_card.dart';
-import 'package:test_area/Features/main/presentation/widgets/custom_listbuilder.dart';
+import 'package:test_area/Features/space_1/presentation/controllers/main_view_con/notifier_provider.dart';
+import 'package:test_area/Features/space_1/presentation/controllers/main_view_con/info_provider.dart';
+import 'package:test_area/Features/space_1/presentation/widgets/custom_card.dart';
+import 'package:test_area/Features/space_1/presentation/widgets/custom_listbuilder.dart';
 
 class MainView extends ConsumerWidget
 {
@@ -26,7 +26,7 @@ class MainView extends ConsumerWidget
             ListBuilderSeparator(
               EdgeInsets.symmetric(horizontal: 15.w),
               infoProviderListInMain.length,
-              (context, index) => Divider(thickness: 2, color: AppColors.kSecondGradientColor,),
+              (context, index) => const Divider(thickness: 2, color: AppColors.kSecondGradientColor,),
               (context, index) => Column(
                 children:
                 [

@@ -8,10 +8,10 @@ class TestAreaView extends StatelessWidget
   Widget build(BuildContext context)
   {
     return SizedBox.fromSize(
-      size: Size(150, 80), // تحديد الحجم مباشرة
+      size: const Size(150, 80), // تحديد الحجم مباشرة
       child: ElevatedButton(
         onPressed: () {},
-        child: Text("زر بحجم ثابت"),
+        child: const Text("زر بحجم ثابت"),
       ),
     );
   }

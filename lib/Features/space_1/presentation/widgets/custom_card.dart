@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Core/utils/styles.dart';
 import 'package:test_area/Core/widgets/containers/custom_container.dart';
-import 'package:test_area/Features/main/presentation/controllers/main_view_con/riverpod_info_provider.dart';
+import 'package:test_area/Features/space_1/presentation/controllers/main_view_con/info_provider.dart';
 
 class CustomTestCard extends ConsumerWidget
 {

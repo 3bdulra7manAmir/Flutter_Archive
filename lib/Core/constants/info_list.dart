@@ -1,4 +1,4 @@
-import 'package:test_area/Features/main/data/models/info_model.dart';
+import 'package:test_area/Features/space_1/data/models/info_model.dart';
 
 final List<InformationModel> infoList =
 [
