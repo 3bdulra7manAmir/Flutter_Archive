@@ -19,5 +19,5 @@ List<InformationModel> info(ref)
 @riverpod
 List<InformationModel> lessInfo(ref)
 {
-  return infoList.where((a) => a.age == 18).toList();
+  return infoList.where((a) => a.id == 18).toList();
 }
