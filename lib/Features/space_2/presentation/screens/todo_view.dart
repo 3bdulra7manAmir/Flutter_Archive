@@ -21,17 +21,25 @@ class TodoView extends ConsumerWidget
             [
               Text("ToDo...", style: Styles.textStyle24,),
               10.verticalSpace,
+
               Text(ref.watch(todoProviderHard).counter.toString(), style: Styles.textStyle20.copyWith(color: Colors.teal,)),
               10.verticalSpace,
+
               CustomButton(buttonText: 'Add +', buttonOnPressed: ()
               //{ref.read(todoProviderEasy.notifier).state++;},
               {ref.read(todoProviderHard.notifier).counterAdd();},
               buttonWidth: 80.w,),
               10.verticalSpace,
+
               CustomButton(buttonText: 'Subtract -', buttonOnPressed: ()
               //{ref.read(todoProviderEasy.notifier).state--;},
               {ref.read(todoProviderHard.notifier).counterSubtract(context);},
               buttonWidth: 110.w,),
+              10.verticalSpace,
+
+              CustomButton(buttonText: 'Switch Theme', buttonOnPressed: ()
+              {ref.read(todoProviderSwitchHard.notifier).themeChanger();},
+              buttonWidth: 130.w,),
             ],
           ),
         ),

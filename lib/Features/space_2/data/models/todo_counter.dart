@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RiverpodModel extends ChangeNotifier
+class RiverpodCounterModel extends ChangeNotifier
 {
-  RiverpodModel({required this.counter});
+  RiverpodCounterModel({required this.counter});
 
   int counter;
 
