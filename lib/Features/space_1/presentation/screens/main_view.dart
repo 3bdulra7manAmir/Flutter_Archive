@@ -23,9 +23,8 @@ class MainView extends ConsumerWidget
         body: Column(
           children:
           [
-            ListBuilderSeparator(
+            CustomListBuilderSeparator(
               EdgeInsets.symmetric(horizontal: 15.w),
-              infoProviderListInMain.length,
               (context, index) => const Divider(thickness: 2, color: AppColors.kSecondGradientColor,),
               (context, index) => Column(
                 children:
@@ -37,6 +36,7 @@ class MainView extends ConsumerWidget
                   }),
                 ],
               ),
+              infoProviderListInMain.length,
             ),
 
             50.verticalSpace,

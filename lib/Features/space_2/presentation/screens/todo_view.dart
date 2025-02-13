@@ -38,6 +38,7 @@ class TodoView extends ConsumerWidget
               10.verticalSpace,
 
               CustomButton(buttonText: 'Switch Theme', buttonOnPressed: ()
+              //{ref.read(todoProviderSwitchEasy.notifier).state.themeChanger();},
               {ref.read(todoProviderSwitchHard.notifier).themeChanger();},
               buttonWidth: 130.w,),
             ],

@@ -24,9 +24,8 @@ class InOpView extends ConsumerWidget
         body: Column(
           children:
           [
-            ListBuilderSeparator(
+            CustomListBuilderSeparator(
               EdgeInsets.symmetric(horizontal: 15.w),
-              infoProviderCartList.length,
               (context, index) => const Divider(thickness: 2, color: AppColors.kSecondGradientColor,),
               (context, index) => Column(
                 children:
@@ -46,6 +45,7 @@ class InOpView extends ConsumerWidget
                     }),
                 ],
               ),
+              infoProviderCartList.length,
             ),
             
             50.verticalSpace,

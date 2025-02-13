@@ -6,4 +6,5 @@ final todoProviderEasy = StateProvider<int>((ref) {return 0;},);
 final todoProviderHard = ChangeNotifierProvider<RiverpodCounterModel>((ref) {return RiverpodCounterModel(counter: 0);} );
 
 
+final todoProviderSwitchEasy = StateProvider<RiverpodThemeModel>((ref) {return RiverpodThemeModel();} );
 final todoProviderSwitchHard = ChangeNotifierProvider<RiverpodThemeModel>((ref) {return RiverpodThemeModel();} );

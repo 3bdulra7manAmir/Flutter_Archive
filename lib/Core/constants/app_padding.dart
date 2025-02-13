@@ -21,4 +21,6 @@ class AppPadding
   
   EdgeInsets kNotificationsCardPadding = EdgeInsets.symmetric(horizontal: 16.w,); //HERE 24
 
+  EdgeInsets kZeroPadding = EdgeInsets.zero; //HERE 24
+
 }

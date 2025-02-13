@@ -1,4 +1,3 @@
-// ignore_for_file: deprecated_member_use
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,9 +8,11 @@ import 'package:test_area/Features/space_2/presentation/controllers/todo_provide
 void main()
 {
   runApp(
-    ScreenUtilInit(
-      designSize: const Size(375, 812),
-      builder: (context, child) => const ProviderScope(child: TestApp())
+    ProviderScope(
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (context, child) => const TestApp()
+        ),
       ),
     );
 }
@@ -32,7 +33,7 @@ class TestApp extends ConsumerWidget
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         
-        theme: ref.watch(todoProviderSwitchHard).currentTheme,
+        //theme: ref.watch(todoProviderSwitchHard).currentTheme,
       ),
     );
   }

@@ -4,3 +4,11 @@ linter:
   rules:
     prefer_const_constructors: true
     prefer_const_declarations: true
+
+analyzer:
+  errors:
+    avoid_print: ignore
+    deprecated_member_use: ignore
+    unused_import: ignore
+  plugins:
+    - custom_lint
