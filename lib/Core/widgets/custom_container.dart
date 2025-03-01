@@ -41,13 +41,14 @@ class CustomContainer extends StatelessWidget
       alignment: containerAlignment,
       
       decoration: containerDecoration ??
-          (containerDecorationColor != null || containerGradient != null
-              ? BoxDecoration(
-                  color: containerDecorationColor,
-                  gradient: containerGradient,
-                  image: containerDecorationImage,
-                )
-              : null),
+      (containerDecorationColor != null || containerGradient != null
+      ? BoxDecoration(
+        color: containerDecorationColor,
+        gradient: containerGradient,
+        image: containerDecorationImage,
+        )
+      : null),
+      
       child: containerChild ?? const SizedBox.shrink(),
     );
   }

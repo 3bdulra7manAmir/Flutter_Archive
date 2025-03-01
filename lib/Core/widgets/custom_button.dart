@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Core/constants/app_borders.dart';
 import 'package:test_area/Core/constants/app_colors.dart';
 import 'package:test_area/Core/utils/styles.dart';
-import 'package:test_area/Core/widgets/containers/custom_container.dart';
+import 'package:test_area/Core/widgets/custom_container.dart';
 
 class CustomButton extends StatelessWidget
 {
@@ -23,12 +23,12 @@ class CustomButton extends StatelessWidget
       containerHeight: buttonHeight ?? 30.h,
       containerDecoration: BoxDecoration(
         gradient: const LinearGradient(colors: [AppColors.kFirstGradientColor, AppColors.kSecondGradientColor]),
-        borderRadius: AppBorders().radiusCircular80,
+        borderRadius: AppBorders.radiusCircular80,
       ),
       containerChild: ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: AppColors.kPurpleButtonColor, shadowColor: AppColors.kPurpleButtonColor,),
         onPressed: buttonOnPressed,
-        child: Center(child: Text(buttonText, style: Styles.textStyle12.copyWith(color: Colors.white,),)),
+        child: Center(child: Text(buttonText, style: AppStyles.textStyle12.copyWith(color: Colors.white,),)),
       ),
     );
   }
