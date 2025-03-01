@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AppColors
+abstract class AppColors
 {
   AppColors._();
   
-  static const Color kFirstGradientColor = Color(0xff662D91);
-  static const Color kSecondGradientColor = Color(0xff905EB6);
+  static const Color kDeepPurpleColor = Color(0xff662D91);
+  static const Color kLightPurpleColor = Color(0xff905EB6);
 
-  static const Color kTextInsideFormFieldColor = Color(0xff777777);
+  static const Color kAlmostGreyColor = Color(0xff777777);
 
-  static const Color kPurpleButtonColor = Colors.transparent;
-  static const Color kLoginFormBoxDecorationColor = Colors.white;
+  static const Color kBlackColor = Colors.black;
+  static const Color kTransparentColor = Colors.transparent;
+  static const Color kWhiteColor = Colors.white;
 }

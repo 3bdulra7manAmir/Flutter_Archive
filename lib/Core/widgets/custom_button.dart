@@ -22,11 +22,11 @@ class CustomButton extends StatelessWidget
       containerWidth: buttonWidth ?? 75.w,
       containerHeight: buttonHeight ?? 30.h,
       containerDecoration: BoxDecoration(
-        gradient: const LinearGradient(colors: [AppColors.kFirstGradientColor, AppColors.kSecondGradientColor]),
+        gradient: const LinearGradient(colors: [AppColors.kDeepPurpleColor, AppColors.kLightPurpleColor]),
         borderRadius: AppBorders.radiusCircular80,
       ),
       containerChild: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: AppColors.kPurpleButtonColor, shadowColor: AppColors.kPurpleButtonColor,),
+        style: ElevatedButton.styleFrom(backgroundColor: AppColors.kTransparentColor, shadowColor: AppColors.kTransparentColor,),
         onPressed: buttonOnPressed,
         child: Center(child: Text(buttonText, style: AppStyles.textStyle12.copyWith(color: Colors.white,),)),
       ),

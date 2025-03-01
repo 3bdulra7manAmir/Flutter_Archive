@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Config/router/app_router.dart';
+import 'package:test_area/Config/theme/app_theme.dart';
 
 void main()
 {
@@ -30,7 +31,10 @@ class TestApp extends ConsumerWidget
         builder: DevicePreview.appBuilder,
         locale: DevicePreview.locale(context),
         routerConfig: AppRouter.router,
+
         debugShowCheckedModeBanner: false,
+
+        theme: AppTheme.themeData,
       ),
     );
   }
