@@ -1,24 +1,27 @@
 import 'package:go_router/go_router.dart';
+import 'package:test_area/Config/router/app_routes.dart';
+import 'package:test_area/Features/space_1/presentation/views/main_view.dart';
 
 
 abstract class AppRouter
 {
   AppRouter._();
 
-  
-
   static final router = GoRouter(
+    
     routes:
     [
-      // GoRoute(
-      //   path: kMainView,
-      //   builder: (context, state) => const MainView(),
-      // ),
+      GoRoute(
+        path: AppRoutes.kMainView,
+        name: AppRoutes.kMainView,
+        builder: (context, state) => const MainView(),
+      ),
 
-      // GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const MidView(),
-      // ),
+      GoRoute(
+        path: '/',
+        //name: AppRoutes.kMainView,
+        builder: (context, state) => const MainView(),
+      ),
     ],
   );
 }

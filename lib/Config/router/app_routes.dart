@@ -1,4 +1,4 @@
 abstract class AppRoutes
 {
-  static const kToDoView = '/ToDoView';
+  static const kMainView = '/kMainView';
 }
