@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-abstract class AppColors
-{
+abstract class AppColors {
   AppColors._();
-  
+
   static const Color kDeepPurpleColor = Color(0xff662D91);
   static const Color kLightPurpleColor = Color(0xff905EB6);
 

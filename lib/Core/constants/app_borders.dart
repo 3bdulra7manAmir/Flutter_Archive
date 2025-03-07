@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-abstract class AppBorders
-{
+abstract class AppBorders {
   AppBorders._();
 
   static BorderRadius radiusCircular25 = BorderRadius.circular(25.r);

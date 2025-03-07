@@ -3,27 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Config/router/app_router.dart';
-import 'package:test_area/Config/theme/app_theme.dart';
 
-void main()
-{
+void main() {
   runApp(
     ProviderScope(
       child: ScreenUtilInit(
-        designSize: const Size(375, 812),
-        builder: (context, child) => const TestApp()
-        ),
-      ),
-    );
+          designSize: const Size(375, 812),
+          builder: (context, child) => const TestApp()),
+    ),
+  );
 }
 
-class TestApp extends ConsumerWidget
-{
+class TestApp extends StatelessWidget {
   const TestApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref)
-  {
+  Widget build(BuildContext context) {
     return DevicePreview(
       enabled: false,
       builder: (context) => MaterialApp.router(
@@ -31,10 +26,7 @@ class TestApp extends ConsumerWidget
         builder: DevicePreview.appBuilder,
         locale: DevicePreview.locale(context),
         routerConfig: AppRouter.router,
-
         debugShowCheckedModeBanner: false,
-
-        theme: AppTheme.themeData,
       ),
     );
   }
