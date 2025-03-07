@@ -19,7 +19,8 @@ class MainView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("RiverPod"),
-        actions: [
+        actions:
+        [
           IconButton(
               onPressed: () {
                 //ref.invalidate(mainStateProvider);

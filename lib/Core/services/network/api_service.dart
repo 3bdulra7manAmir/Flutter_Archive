@@ -12,28 +12,23 @@ class ApiService
 
   // ApiService get apiService => _apiService;
 
-  // String baseURL = "https://zenquotes.io/api/";
-  // String endpoint = "random";
-
-  // Future<List<QuoteModel>> getRandomQuote() async
-  // {
-    
-  // }
-
   String endpoint = "https://reqres.in/api/users?page=1";
 
   Future<List<UserModel>> getUsers() async
   {
-    final response = await http.get(Uri.parse(endpoint));
-    if (response.statusCode == 200)
-    {
-      final data = jsonDecode(response.body)['data'];
-      return data.map((e) => UserModel.fromJson(e)).toList();
-    }
+  final response = await http.get(Uri.parse(endpoint));
 
-    else
-    {
-      throw Exception('Failed to get users');
-    }
+  if (response.statusCode == 200)
+  {
+    final List<dynamic> data = jsonDecode(response.body)['data'];
+    
+    return data.map((e) => UserModel.fromJson(e as Map<String, dynamic>)).toList(); // Ensure e is a Map
   }
+  
+  else
+  {
+    throw Exception('Failed to get users');
+  }
+}
+
 }
