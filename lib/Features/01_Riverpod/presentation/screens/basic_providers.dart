@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test_area/Features/space_1/presentation/controllers/basic_providers.dart';
+import 'package:test_area/Features/01_Riverpod/presentation/controllers/basic_providers.dart';
 
 class MainView extends ConsumerWidget
 {

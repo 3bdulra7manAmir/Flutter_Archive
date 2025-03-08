@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:test_area/Features/space_1/domain/entity/quote_model/quote_model.dart';
-import 'package:test_area/Features/space_1/domain/entity/quote_model/user_model.dart';
+import 'package:test_area/Features/01_Riverpod/domain/entity/quote_model/user_model.dart';
 
 class ApiService
 {

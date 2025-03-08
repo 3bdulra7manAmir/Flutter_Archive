@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_area/Features/space_1/presentation/controllers/stream_provider.dart';
+import 'package:test_area/Features/01_Riverpod/presentation/controllers/stream_provider.dart';
 
 class StreamProvider extends ConsumerWidget
 {
