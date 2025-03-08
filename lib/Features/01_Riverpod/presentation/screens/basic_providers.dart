@@ -103,7 +103,8 @@ class MainView extends ConsumerWidget
             Text("Future Provider: ${ref.watch(mainStateNotifierProvider)}"),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children:
+              [
                 IconButton(
                     onPressed: ()
                     {
@@ -118,6 +119,13 @@ class MainView extends ConsumerWidget
                     icon: const Icon(Icons.remove_circle_outline_sharp)),
               ],
             ),
+
+            40.verticalSpace,
+            TextButton(onPressed: ()
+            {
+              ref.read(themeStateNotifierProvider.notifier).toggleTheme();
+              },
+            child: const Text("Switch"))
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_area/Core/services/network/api_service.dart';
 import 'package:test_area/Features/01_Riverpod/domain/entity/quote_model/user_model.dart';
@@ -40,3 +41,20 @@ final mainStateNotifierProvider = StateNotifierProvider<MainStateNotifier, int>(
 // final userDataProvider = FutureProvider<List <UserModel> >(
 //   (ref) => ref.read(apiProvider).getUsers()
 // );
+
+
+//----------------------------------------------------------------//
+//PLAY AREA
+//----------------------------------------------------------------//
+
+class ThemeDataProviderClass extends StateNotifier<ThemeData>
+{
+  ThemeDataProviderClass() : super(ThemeData.light());
+
+  void toggleTheme()
+  {
+    state = state.brightness == Brightness.light ? ThemeData.dark() : ThemeData.light();
+  }
+}
+
+final themeStateNotifierProvider = StateNotifierProvider<ThemeDataProviderClass, ThemeData>((ref) => ThemeDataProviderClass());

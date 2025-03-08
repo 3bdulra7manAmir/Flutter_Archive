@@ -12,7 +12,7 @@ abstract class AppRouter
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kFamilyProviderView,
+    initialLocation: AppRoutes.kMainView,
     routes:
     [
       GoRoute(
