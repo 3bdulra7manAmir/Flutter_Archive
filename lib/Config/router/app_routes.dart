@@ -8,4 +8,5 @@ abstract class AppRoutes
   static const kAutoDisposeHomeView = '/kAutoDisposeHomeView';
   static const kAutoDisposeView = '/kAutoDisposeView';
   static const kFamilyProviderView = '/kFamilyProviderView';
+  static const kGeneratedProviderView = '/kGeneratedProviderView';
 }
