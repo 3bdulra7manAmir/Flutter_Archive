@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:test_area/Config/router/app_routes.dart';
+import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/auto_dispose.dart';
+import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/home_screen.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/basic_providers.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/future_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/stream_provider.dart';
@@ -9,7 +11,7 @@ abstract class AppRouter
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kStreamProviderView,
+    initialLocation: AppRoutes.kAutoDisposeHomeView,
     routes:
     [
       GoRoute(
@@ -26,6 +28,16 @@ abstract class AppRouter
         path: AppRoutes.kStreamProviderView,
         name: AppRoutes.kStreamProviderView,
         builder: (context, state) => const StreamProvider(),
+      ),
+      GoRoute(
+        path: AppRoutes.kAutoDisposeHomeView,
+        name: AppRoutes.kAutoDisposeHomeView,
+        builder: (context, state) => const AutoDisposeHome(),
+      ),
+      GoRoute(
+        path: AppRoutes.kAutoDisposeView,
+        name: AppRoutes.kAutoDisposeView,
+        builder: (context, state) => const AutoDispose(),
       ),
     ],
   );
