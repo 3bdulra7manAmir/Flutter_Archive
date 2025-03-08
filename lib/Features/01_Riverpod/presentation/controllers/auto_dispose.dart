@@ -13,16 +13,22 @@ final stateNotifierProvider = StateNotifierProvider.autoDispose<StateNotifierPro
       link.close();
     });
     ref.onDispose(() => timer.cancel(),);
-    return StateNotifierProviderClass();
+    return StateNotifierProviderClass(0);
   }
 ));
 
 class StateNotifierProviderClass extends StateNotifier<int>
 {
-  StateNotifierProviderClass() : super(0);
+
+  StateNotifierProviderClass(super.state);
 
   void increment()
   {
-    state++;
+    state = state + 1;
+  }
+
+  void decrement()
+  {
+    state = state - 1;
   }
 }

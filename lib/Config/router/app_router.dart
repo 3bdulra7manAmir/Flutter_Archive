@@ -3,6 +3,7 @@ import 'package:test_area/Config/router/app_routes.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/auto_dispose.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/home_screen.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/basic_providers.dart';
+import 'package:test_area/Features/01_Riverpod/presentation/screens/family_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/future_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/stream_provider.dart';
 
@@ -11,7 +12,7 @@ abstract class AppRouter
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kAutoDisposeHomeView,
+    initialLocation: AppRoutes.kFamilyProviderView,
     routes:
     [
       GoRoute(
@@ -38,6 +39,12 @@ abstract class AppRouter
         path: AppRoutes.kAutoDisposeView,
         name: AppRoutes.kAutoDisposeView,
         builder: (context, state) => const AutoDispose(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.kFamilyProviderView,
+        name: AppRoutes.kFamilyProviderView,
+        builder: (context, state) => const FamilyProvider(),
       ),
     ],
   );
