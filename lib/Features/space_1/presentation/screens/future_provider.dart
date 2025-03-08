@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test_area/Features/space_1/presentation/controllers/main_provider_2.dart';
+import 'package:test_area/Features/space_1/presentation/controllers/future_provider.dart';
 
 import '../../domain/entity/quote_model/user_model.dart';
 

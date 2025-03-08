@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test_area/Features/space_1/presentation/controllers/main_provider.dart';
+import 'package:test_area/Features/space_1/presentation/controllers/basic_providers.dart';
 
-class MainView extends ConsumerWidget {
+class MainView extends ConsumerWidget
+{
   const MainView({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(mainStateProvider, (pervious, next) {
-      if (next < 0) {
+  Widget build(BuildContext context, WidgetRef ref)
+  {
+    ref.listen(mainStateProvider, (pervious, next)
+    {
+      if (next < 0)
+      {
         //ref.invalidate(mainStateProvider);
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text("Less Than ZERO, $next")));
@@ -22,7 +26,8 @@ class MainView extends ConsumerWidget {
         actions:
         [
           IconButton(
-              onPressed: () {
+              onPressed: ()
+              {
                 //ref.invalidate(mainStateProvider);
                 //ref.refresh(mainStateProvider);
                 //ref.read(mainStateProvider.notifier).update((state) => 0);
@@ -33,7 +38,8 @@ class MainView extends ConsumerWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children:
+          [
             ///Default ///P1 Provider
             Text("${ref.watch(mainProvider).toString()} Default Provider"),
 
@@ -49,15 +55,19 @@ class MainView extends ConsumerWidget {
 
             ///P2 ///State Provider
             Text("State Provider: ${ref.watch(mainStateProvider)}"),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Row(mainAxisAlignment: MainAxisAlignment.center, 
+            children:
+            [
               IconButton(
-                  onPressed: () {
+                  onPressed: ()
+                  {
                     ref.read(mainStateProvider.notifier).state++;
                     //ref.read(mainStateProvider.notifier).update((state) => state + 1);
                   },
                   icon: const Icon(Icons.add_circle_outline_sharp)),
               IconButton(
-                  onPressed: () {
+                  onPressed: ()
+                  {
                     ref.read(mainStateProvider.notifier).state--;
                   },
                   icon: const Icon(Icons.remove_circle_outline_sharp)),
@@ -66,18 +76,21 @@ class MainView extends ConsumerWidget {
             40.verticalSpace,
 
             ///P3 ///State Notifier Provider
-            Text(
-                "State Notifier Provider: ${ref.watch(mainStateNotifierProvider)}"),
+            Text("State Notifier Provider: ${ref.watch(mainStateNotifierProvider)}"),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children:
+              [
                 IconButton(
-                    onPressed: () {
+                    onPressed: ()
+                    {
                       ref.read(mainStateNotifierProvider.notifier).increment();
                     },
                     icon: const Icon(Icons.add_circle_outline_sharp)),
                 IconButton(
-                    onPressed: () {
+                    onPressed: ()
+                    {
                       ref.read(mainStateNotifierProvider.notifier).decrement();
                     },
                     icon: const Icon(Icons.remove_circle_outline_sharp)),
@@ -92,12 +105,14 @@ class MainView extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                    onPressed: () {
+                    onPressed: ()
+                    {
                       ref.read(mainStateNotifierProvider.notifier).increment();
                     },
                     icon: const Icon(Icons.add_circle_outline_sharp)),
                 IconButton(
-                    onPressed: () {
+                    onPressed: ()
+                    {
                       ref.read(mainStateNotifierProvider.notifier).decrement();
                     },
                     icon: const Icon(Icons.remove_circle_outline_sharp)),
