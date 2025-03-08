@@ -41,12 +41,10 @@ class FutureProvider extends ConsumerWidget
                   Text("User Last Name:\t ${data[index].lastName}"),
                   15.horizontalSpace,
                   
-                  //Text("User Avatar:\t ${data[index].avatar}"),
-                  // CachedNetworkImage(
-                  //   imageUrl: "${data[index].avatar}",
-                  //   errorWidget: (context, url, error) => const Icon(Icons.error),
-                  //   ),
-                  Image.network(data[index].avatar!),
+                  CachedNetworkImage(
+                    imageUrl: "${data[index].avatar}",
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    ),
                 ],
               ),
             ),
