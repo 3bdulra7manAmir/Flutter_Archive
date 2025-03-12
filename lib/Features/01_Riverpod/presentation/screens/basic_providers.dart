@@ -15,8 +15,7 @@ class MainView extends ConsumerWidget
       if (next < 0)
       {
         //ref.invalidate(mainStateProvider);
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Less Than ZERO, $next")));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Less Than ZERO, $next")));
       }
     });
 

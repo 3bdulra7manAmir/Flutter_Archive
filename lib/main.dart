@@ -10,7 +10,10 @@ void main() {
     ProviderScope(
       child: ScreenUtilInit(
           designSize: const Size(375, 812),
-          builder: (context, child) => const TestApp()),
+          builder: (context, child) => DevicePreview(
+            builder: (context) => const TestApp(),
+            enabled: true,)
+            ),
     ),
   );
 }

@@ -25,8 +25,7 @@ class CustomButton extends StatelessWidget {
       containerWidth: buttonWidth ?? 75.w,
       containerHeight: buttonHeight ?? 30.h,
       containerDecoration: BoxDecoration(
-        gradient: const LinearGradient(
-            colors: [AppColors.kDeepPurpleColor, AppColors.kLightPurpleColor]),
+        gradient: AppColors.appGradient,
         borderRadius: AppBorders.radiusCircular80,
       ),
       containerChild: ElevatedButton(

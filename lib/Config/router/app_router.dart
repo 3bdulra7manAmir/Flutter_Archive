@@ -3,17 +3,20 @@ import 'package:test_area/Config/router/app_routes.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/auto_dispose.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/home_screen.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/basic_providers.dart';
+import 'package:test_area/Features/01_Riverpod/presentation/screens/bnb/bnb_view.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/family_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/future_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/generated_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/stream_provider.dart';
+import 'package:test_area/Features/03_BMB_Provider/bnb_view.dart';
+import 'package:test_area/Features/04_BMB_GoRouter/app_navigator.dart';
 
 abstract class AppRouter
 {
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kGeneratedProviderView,
+    initialLocation: AppRoutes.kHomeView,
     routes:
     [
       GoRoute(
@@ -31,25 +34,68 @@ abstract class AppRouter
         name: AppRoutes.kStreamProviderView,
         builder: (context, state) => const StreamProvider(),
       ),
-      GoRoute(
-        path: AppRoutes.kAutoDisposeHomeView,
-        name: AppRoutes.kAutoDisposeHomeView,
-        builder: (context, state) => const AutoDisposeHome(),
-      ),
+      // GoRoute(
+      //   path: AppRoutes.kAutoDisposeHomeView,
+      //   name: AppRoutes.kAutoDisposeHomeView,
+      //   builder: (context, state) => const AutoDisposeHome(),
+      // ),
       GoRoute(
         path: AppRoutes.kAutoDisposeView,
         name: AppRoutes.kAutoDisposeView,
         builder: (context, state) => const AutoDispose(),
       ),
+      // GoRoute(
+      //   path: AppRoutes.kFamilyProviderView,
+      //   name: AppRoutes.kFamilyProviderView,
+      //   builder: (context, state) => const FamilyProvider(),
+      // ),
+      // GoRoute(
+      //   path: AppRoutes.kGeneratedProviderView,
+      //   name: AppRoutes.kGeneratedProviderView,
+      //   builder: (context, state) => const GeneratedProvider(),
+      // ),
       GoRoute(
-        path: AppRoutes.kFamilyProviderView,
-        name: AppRoutes.kFamilyProviderView,
-        builder: (context, state) => const FamilyProvider(),
+        path: AppRoutes.kBnBView,
+        name: AppRoutes.kBnBView,
+        builder: (context, state) => const BnBView(),
       ),
-      GoRoute(
-        path: AppRoutes.kGeneratedProviderView,
-        name: AppRoutes.kGeneratedProviderView,
-        builder: (context, state) => const GeneratedProvider(),
+
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) => BottomNavExample(navigationShell: navigationShell),
+        branches: [
+          StatefulShellBranch(
+            initialLocation: AppRoutes.kHomeView,
+            routes: [
+              GoRoute(
+                name: AppRoutes.kHomeView,
+                path: AppRoutes.kHomeView,
+                builder: (context, state) => const HomePage(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            initialLocation: AppRoutes.kSearchView,
+            routes: [
+              GoRoute(
+                name: AppRoutes.kSearchView,
+                path: AppRoutes.kSearchView,
+                builder: (context, state) => const SearchPage(),
+              ),
+            ],
+          ),
+
+          StatefulShellBranch(
+            initialLocation: AppRoutes.kProfileView,
+            routes:
+            [
+              GoRoute(
+                name: AppRoutes.kProfileView,
+                path: AppRoutes.kProfileView,
+                builder: (context, state) => const ProfilePage(),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
   );

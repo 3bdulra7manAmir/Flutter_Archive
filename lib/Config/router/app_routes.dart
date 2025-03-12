@@ -9,4 +9,11 @@ abstract class AppRoutes
   static const kAutoDisposeView = '/kAutoDisposeView';
   static const kFamilyProviderView = '/kFamilyProviderView';
   static const kGeneratedProviderView = '/kGeneratedProviderView';
+
+  static const kBnBView = '/kBnBView';
+
+  static const kBottomNavExample = '/kBottomNavExample';
+  static const kHomeView = '/kHomeView';
+  static const kSearchView = '/kSearchView';
+  static const kProfileView = '/kProfileView';
 }
