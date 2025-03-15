@@ -9,6 +9,6 @@ analyzer:
   errors:
     avoid_print: ignore
     deprecated_member_use: ignore
-    unused_import: ignore
+    #unused_import: ignore
   plugins:
     - custom_lint

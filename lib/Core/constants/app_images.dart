@@ -1,20 +1,29 @@
-abstract class AppIMGs {
-  AppIMGs._();
+class AppAssets
+{
+  AppAssets._();
 
-  static const String kFluencyBooksPNG = 'assets/images/png/Splash_View_Bg.png';
-  static const String kFluencyLoginHatPNG =
-      'assets/images/png/Login_View_Bg.png';
+  static final icons = _AppIcons._();
 
-  static const String kFluencyLogoSVG = 'assets/images/svg/Fluency_Logo.svg';
+  static final images = _AppIMGs._();
+}
 
-  static const String kFluencyBackArrowSVG =
-      'assets/images/svg/Not_View_BackArrow.svg';
-  static const String kFluencyBackArrowPNG =
-      'assets/images/png/Not_View_BackArrow.png';
 
-  static const String kFluencyObsecureTextIconPNG =
-      'assets/images/png/Login_View_Eye.png';
+class _AppIMGs
+{
+  _AppIMGs._();
 
-  static const String kFluencyNoNotificationsSVG =
-      'assets/images/svg/Not_View_no_Notifications.svg';
+  final String saudiAvatarPNG = "assets/images/png/Avatar.png";
+  final String mrMuhammedHalwaniPNG = "assets/images/png/Muhammed_Halwani.png";
+  final String saidOmarPNG = "assets/images/png/Said_Omar.png";
+
+}
+
+
+class _AppIcons
+{
+  _AppIcons._();
+
+  final String whiteRightArrowSVG = "assets/images/icons/svg/WhiteRightArrow.svg";
+  final String crownSVG = "assets/images/icons/svg/Crown.svg";
+
 }

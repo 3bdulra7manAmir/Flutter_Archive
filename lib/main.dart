@@ -4,16 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Config/router/app_router.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/controllers/basic_providers.dart';
+import 'package:test_area/Features/05_Hive/hive_init.dart';
 
-void main() {
+void main() async
+{
+  WidgetsFlutterBinding.ensureInitialized();
+  await hiveInit();
+
   runApp(
     ProviderScope(
       child: ScreenUtilInit(
-          designSize: const Size(375, 812),
-          builder: (context, child) => DevicePreview(
-            builder: (context) => const TestApp(),
-            enabled: true,)
-            ),
+        designSize: const Size(375, 812),
+        builder: (context, child) => DevicePreview(
+          builder: (context) => const TestApp(),
+          enabled: true,
+        ),
+      ),
     ),
   );
 }

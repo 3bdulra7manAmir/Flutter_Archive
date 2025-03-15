@@ -1,22 +1,20 @@
 import 'package:go_router/go_router.dart';
 import 'package:test_area/Config/router/app_routes.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/auto_dispose.dart';
-import 'package:test_area/Features/01_Riverpod/presentation/screens/auto_dispose/home_screen.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/basic_providers.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/bnb/bnb_view.dart';
-import 'package:test_area/Features/01_Riverpod/presentation/screens/family_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/future_provider.dart';
-import 'package:test_area/Features/01_Riverpod/presentation/screens/generated_provider.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/screens/stream_provider.dart';
 import 'package:test_area/Features/03_BMB_Provider/bnb_view.dart';
 import 'package:test_area/Features/04_BMB_GoRouter/app_navigator.dart';
+import 'package:test_area/Features/05_Hive/hive_view.dart';
 
 abstract class AppRouter
 {
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kHomeView,
+    initialLocation: AppRoutes.kHiveView,
     routes:
     [
       GoRoute(
@@ -96,6 +94,12 @@ abstract class AppRouter
             ],
           ),
         ],
+      ),
+
+      GoRoute(
+        name: AppRoutes.kHiveView,
+        path: AppRoutes.kHiveView,
+        builder: (context, state) => const HiveView(),
       ),
     ],
   );

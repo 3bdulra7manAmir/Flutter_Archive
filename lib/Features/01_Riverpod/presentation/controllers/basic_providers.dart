@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_area/Core/services/network/api_service.dart';
-import 'package:test_area/Features/01_Riverpod/domain/entity/quote_model/user_model.dart';
+
 
 //Deafult Primitive Provider
 final mainProvider = Provider<String>((ref) => "Hello",);

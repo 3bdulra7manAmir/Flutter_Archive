@@ -16,4 +16,6 @@ abstract class AppRoutes
   static const kHomeView = '/kHomeView';
   static const kSearchView = '/kSearchView';
   static const kProfileView = '/kProfileView';
+  
+  static const kHiveView = '/kHiveView';
 }
