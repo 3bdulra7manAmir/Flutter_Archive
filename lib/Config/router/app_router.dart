@@ -7,7 +7,7 @@ import 'package:test_area/Features/01_Riverpod/presentation/screens/future_provi
 import 'package:test_area/Features/01_Riverpod/presentation/screens/stream_provider.dart';
 import 'package:test_area/Features/03_BMB_Provider/bnb_view.dart';
 import 'package:test_area/Features/04_BMB_GoRouter/app_navigator.dart';
-import 'package:test_area/Features/05_Hive/hive_view.dart';
+import 'package:test_area/Features/06_Hive/hive_view.dart';
 
 abstract class AppRouter
 {

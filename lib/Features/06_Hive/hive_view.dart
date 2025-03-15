@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_area/Features/05_Hive/info_card.dart';
+import 'package:test_area/Features/06_Hive/info_card.dart';
 
 class HiveView extends StatelessWidget
 {
