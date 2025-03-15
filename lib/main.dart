@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Config/router/app_router.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/controllers/basic_providers.dart';
-import 'package:test_area/Features/05_Hive/hive_init.dart';
+import 'package:test_area/Features/06_Hive/hive_init.dart';
 
 void main() async
 {

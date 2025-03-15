@@ -42,24 +42,24 @@ class CustomInfoCard extends StatelessWidget
                     ),
                     
                     4.verticalSpace,
-
+    
                     Text("Upgrade to unlock all the features",
                       style: AppStyles.textStyle12.copyWith(color: AppColors.white),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
-
+    
               ],
             ),
-
+    
             const Spacer(),
             SvgPicture.asset(AppAssets.icons.whiteRightArrowSVG),
             16.horizontalSpace,
           ],
         ),
       ),
-
+    
     );
   }
 }

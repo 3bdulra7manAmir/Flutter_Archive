@@ -6,7 +6,7 @@ part of 'hive_database.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CardInfoAdapter extends TypeAdapter<Info> {
+class InfoAdapter extends TypeAdapter<Info> {
   @override
   final int typeId = 1;
 
@@ -17,23 +17,26 @@ class CardInfoAdapter extends TypeAdapter<Info> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Info(
-      imgPath: fields[0] as String,
-      titleText: fields[1] == null ? 'Hill, Hydra' : fields[1] as String,
-      subTitleText: fields[2] == null
+      id: fields[0] as int?,
+      imgPath: fields[1] as String?,
+      titleText: fields[2] == null ? 'Hill, Hydra' : fields[2] as String?,
+      subTitleText: fields[3] == null
           ? "Cut of One Head to more Shall take it's Place"
-          : fields[2] as String,
+          : fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Info obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.imgPath)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.titleText)
+      ..write(obj.imgPath)
       ..writeByte(2)
+      ..write(obj.titleText)
+      ..writeByte(3)
       ..write(obj.subTitleText);
   }
 
@@ -43,7 +46,7 @@ class CardInfoAdapter extends TypeAdapter<Info> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CardInfoAdapter &&
+      other is InfoAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

@@ -2,7 +2,7 @@
 
 import 'package:hive_flutter/adapters.dart';
 
-Future<void> hiveInit() async
+Future<void> hiveInit_() async
 {
   /// init
   try
