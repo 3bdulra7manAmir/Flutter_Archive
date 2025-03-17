@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:test_area/Features/06_Hive/hive_database.dart';
 
@@ -10,7 +10,12 @@ class HiveServices
   
 
   final String _infoBoxName = "infoBox";
-  Future<Box<Info>> get _infoBoxGetter async => await Hive.openBox(_infoBoxName);
+  Box<Info>? _infoBox; // Store the opened box
+
+  Future<Box<Info>> get _infoBoxGetter async
+  {
+    return _infoBox ??= await Hive.openBox<Info>(_infoBoxName);
+  }
 
   Future<void> addInfo(Info info) async
   {
@@ -20,6 +25,7 @@ class HiveServices
       await infoAdder.add(info);
       print(infoAdder.values);
     }
+
     catch (err)
     {
       print("Error adding info: $err"); 
@@ -31,9 +37,13 @@ class HiveServices
     var infoReader = await _infoBoxGetter;
     try
     {
+      //infoReader.add(const Info(imgPath: "assets/images/icons/svg/Crown.svg"));
+      //infoReader.add(const Info(titleText: "This is Title"));
+      //infoReader.add(const Info(subTitleText: "This is a SubTitle"));
       print(infoReader.values.toList());
       return infoReader.values.toList();
     }
+
     catch (err)
     {
       //print("Error getting info: $err");
@@ -44,7 +54,16 @@ class HiveServices
   Future<void> updateInfo(int id, Info info) async
   {
     var infoUpdater = await _infoBoxGetter;
-    await infoUpdater.putAt(id, info);
+    try
+    {
+      
+      await infoUpdater.putAt(id, info);
+    }
+
+    catch (err)
+    {
+      print("Error updating info: $err");
+    }
   }
 
   Future<void> deleteInfo(int id) async
@@ -55,6 +74,7 @@ class HiveServices
       await infoDeleter.deleteAt(id);
       print(infoDeleter.values);
     }
+
     catch (err)
     {
       print("Error deleting info: $err");
@@ -64,12 +84,21 @@ class HiveServices
   Future<void> deleteAllInfo() async
   {
     var infoDeleter = await _infoBoxGetter;
-    await infoDeleter.clear();
+    try
+    {
+      await infoDeleter.clear();
+    }
+
+    catch (err)
+    {
+      print("Error deleting all info: $err");
+    }
   }
 
-  // Future<ValueListenable<Box>> listenable() async
-  // {
-  // var listenBox = await _infoBoxGetter;
-  // return listenBox.listenable();
-  // }
+  /// Returns a ValueListenable for listening to changes in the Hive box
+  Future<ValueListenable<Box<Info>>> listenable() async
+  {
+    var listenableBox = await _infoBoxGetter;
+    return listenableBox.listenable();
+  }
 }

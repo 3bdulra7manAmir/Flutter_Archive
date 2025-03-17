@@ -9,11 +9,13 @@ import 'package:test_area/Core/utils/styles.dart';
 
 class CustomInfoCard extends StatelessWidget
 {
-  const CustomInfoCard({super.key});
+  const CustomInfoCard({super.key, this.cardFIcon, this.cardTitleText, this.cardSubTitle});
 
-  // final String cardFIcon;
-  // final String cardFText;
-  // final String cardSText;
+  final String? cardFIcon;
+  final String? cardTitleText;
+  final String? cardSubTitle;
+
+  
 
   @override
   Widget build(BuildContext context)
@@ -32,19 +34,16 @@ class CustomInfoCard extends StatelessWidget
               mainAxisAlignment: MainAxisAlignment.start,
               children:
               [
-                SvgPicture.asset(AppAssets.icons.crownSVG, fit: BoxFit.cover,),
+                SvgPicture.asset(cardFIcon ?? "assets/images/icons/svg/Crown.svg", fit: BoxFit.cover,),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children:
                   [
-                    Text("Free Plan",
-                      style: AppStyles.textStyle14.copyWith(color: AppColors.white),
-                    ),
+                    Text(cardTitleText ?? "Title", style: AppStyles.textStyle14.copyWith(color: AppColors.white),),
                     
                     4.verticalSpace,
     
-                    Text("Upgrade to unlock all the features",
-                      style: AppStyles.textStyle12.copyWith(color: AppColors.white),
+                    Text(cardSubTitle ?? "SubTitle", style: AppStyles.textStyle12.copyWith(color: AppColors.white),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],

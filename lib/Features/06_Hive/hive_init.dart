@@ -10,6 +10,8 @@ Future<void> hiveInit() async
   {
     await Hive.initFlutter();
     Hive.registerAdapter(InfoAdapter());
+    
+    print("Hive InfoAdapter registered");
     print("Hive initialized Successfully");
   }
   catch (err)
