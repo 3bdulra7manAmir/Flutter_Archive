@@ -19,7 +19,7 @@ abstract class AppRouter
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kResponsiveView,
+    initialLocation: AppRoutes.kPipAll,
     routes:
     [
       GoRoute(
