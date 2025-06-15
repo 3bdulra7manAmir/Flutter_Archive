@@ -3,23 +3,21 @@ import 'package:pip/pip.dart';
 
 class PipController {
   final Pip _pip = Pip();
-  bool _isInitialized = false;
 
   Future<void> enterPipMode() async {
     if (await _pip.isSupported()) {
-      if (!_isInitialized) {
-        await _pip.setup(const PipOptions(
-          autoEnterEnabled: true,
-          aspectRatioX: 16,
-          aspectRatioY: 9,
-          preferredContentWidth: 500,
-          preferredContentHeight: 500,
-        ));
-        _isInitialized = true;
-      }
-      if (!(await _pip.isActived())) {
-        await _pip.start();
-      }
+      // First setup the PiP with required parameters
+      await _pip.setup(const PipOptions(
+        autoEnterEnabled: true,
+        // For Android - aspect ratio (16:9 example)
+        aspectRatioX: 16,
+        aspectRatioY: 9,
+        // For iOS - preferred size
+        preferredContentWidth: 500,
+        preferredContentHeight: 500,
+      ));
+      // Then start PiP mode
+      await _pip.start();
     }
   }
 
@@ -29,7 +27,6 @@ class PipController {
     }
   }
 }
-
 
 class PipAllView extends StatefulWidget {
   const PipAllView({super.key});
@@ -54,23 +51,19 @@ class _PipAllViewState extends State<PipAllView> with WidgetsBindingObserver {
     super.dispose();
   }
 
-@override
-void didChangeAppLifecycleState(AppLifecycleState state) {
-  if (state == AppLifecycleState.paused) {
-    _pipController.enterPipMode().then((_) {
-      setState(() {
-        _isInPipMode = true;
-      });
-    });
-  } else if (state == AppLifecycleState.resumed) {
-    _pipController.exitPipMode().then((_) {
-      setState(() {
-        _isInPipMode = false;
-      });
-    });
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state)
+  {
+    if (state == AppLifecycleState.paused)
+    {
+      // Optional: Auto-enter PiP when app goes to background
+      // Note: On iOS, this might not work due to Apple's restrictions
+      _pipController.enterPipMode();
+    } else if (state == AppLifecycleState.resumed) {
+      // Optional: Exit PiP when app comes to foreground
+      _pipController.exitPipMode();
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
