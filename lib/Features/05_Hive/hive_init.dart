@@ -21,7 +21,7 @@ Future<void> hiveInit_() async
   {
     if (!Hive.isBoxOpen('imgPathBox'))
     {
-      var imgBox = await Hive.openBox<String>('imgPathBox');
+      final imgBox = await Hive.openBox<String>('imgPathBox');
       //imgBox.put("id", "1");
       //imgBox.put("name", "Akif");
       //print(imgBox.keys);

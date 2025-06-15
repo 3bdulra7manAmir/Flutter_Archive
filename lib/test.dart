@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
+// import 'package:go_router/go_router.dart';
+// import 'package:test_area/Features/01_Riverpod/presentation/screens/bnb/bnb_view.dart';
+// import 'package:test_area/Features/03_BMB_Provider/bnb_view.dart';
 
-class TestAreaView extends StatelessWidget {
-  const TestAreaView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: const Size(150, 80), // تحديد الحجم مباشرة
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text("زر بحجم ثابت"),
-      ),
-    );
-  }
-}
+// final GoRouter router = GoRouter(
+//   initialLocation: '/', // الصفحة الافتراضية
+//   routes: [
+//     GoRoute(
+//       path: '/',
+//       builder: (context, state) => const HomeScreen(),
+//     ),
+//     GoRoute(
+//       path: '/bnbview',
+//       builder: (context, state) => const BnBView(),
+//     ),
+//   ],
+// );

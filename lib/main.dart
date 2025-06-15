@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_area/Config/router/app_router.dart';
 import 'package:test_area/Features/01_Riverpod/presentation/controllers/basic_providers.dart';
-import 'package:test_area/Features/06_Hive/hive_init.dart';
+import 'Features/06_Hive/hive_init.dart';
 
 void main() async
 {
@@ -15,10 +15,7 @@ void main() async
     ProviderScope(
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
-        builder: (context, child) => DevicePreview(
-          builder: (context) => const TestApp(),
-          enabled: true,
-        ),
+        builder: (context, child) => const TestApp(),
       ),
     ),
   );
@@ -34,13 +31,11 @@ class TestApp extends ConsumerWidget
     return DevicePreview(
       enabled: false,
       builder: (context) => MaterialApp.router(
-        useInheritedMediaQuery: true,
+        //useInheritedMediaQuery: true,
         builder: DevicePreview.appBuilder,
         locale: DevicePreview.locale(context),
         routerConfig: AppRouter.router,
-
         debugShowCheckedModeBanner: false,
-
         theme: ref.watch(themeStateNotifierProvider),
       ),
     );

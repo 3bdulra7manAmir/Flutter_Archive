@@ -8,15 +8,28 @@ import 'package:test_area/Features/01_Riverpod/presentation/screens/stream_provi
 import 'package:test_area/Features/03_BMB_Provider/bnb_view.dart';
 import 'package:test_area/Features/04_BMB_GoRouter/app_navigator.dart';
 import 'package:test_area/Features/06_Hive/hive_view.dart';
+import 'package:test_area/Features/07_UI_Test/test.dart';
+import 'package:test_area/Features/08_Responsive/screens/responsive.dart';
+import 'package:test_area/Features/09_Pip/presentation/screen/pip_view.dart';
 
 abstract class AppRouter
 {
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kHiveView,
+    initialLocation: AppRoutes.kPip,
     routes:
     [
+      GoRoute(
+        path: AppRoutes.kPip,
+        name: AppRoutes.kPip,
+        builder: (context, state) => const PipView(),
+      ),
+      GoRoute(
+        path: AppRoutes.kResponsiveView,
+        name: AppRoutes.kResponsiveView,
+        builder: (context, state) => const ResponsiveView(),
+      ),
       GoRoute(
         path: AppRoutes.kMainView,
         name: AppRoutes.kMainView,
@@ -100,6 +113,12 @@ abstract class AppRouter
         name: AppRoutes.kHiveView,
         path: AppRoutes.kHiveView,
         builder: (context, state) => const HiveView(),
+      ),
+
+      GoRoute(
+        name: AppRoutes.ktestView,
+        path: AppRoutes.ktestView,
+        builder: (context, state) => const LoginScreens(),
       ),
     ],
   );

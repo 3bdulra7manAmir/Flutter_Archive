@@ -19,7 +19,7 @@ class HiveServices
 
   Future<void> addInfo(Info info) async
   {
-    var infoAdder = await _infoBoxGetter;
+    final infoAdder = await _infoBoxGetter;
     try
     {
       await infoAdder.add(info);
@@ -34,7 +34,7 @@ class HiveServices
 
   Future<List<Info>> getInfo() async
   {
-    var infoReader = await _infoBoxGetter;
+    final infoReader = await _infoBoxGetter;
     try
     {
       //infoReader.add(const Info(imgPath: "assets/images/icons/svg/Crown.svg"));
@@ -53,7 +53,7 @@ class HiveServices
 
   Future<void> updateInfo(int id, Info info) async
   {
-    var infoUpdater = await _infoBoxGetter;
+    final infoUpdater = await _infoBoxGetter;
     try
     {
       
@@ -68,7 +68,7 @@ class HiveServices
 
   Future<void> deleteInfo(int id) async
   {
-    var infoDeleter = await _infoBoxGetter;
+    final infoDeleter = await _infoBoxGetter;
     try
     {
       await infoDeleter.deleteAt(id);
@@ -83,7 +83,7 @@ class HiveServices
 
   Future<void> deleteAllInfo() async
   {
-    var infoDeleter = await _infoBoxGetter;
+    final infoDeleter = await _infoBoxGetter;
     try
     {
       await infoDeleter.clear();
@@ -98,7 +98,7 @@ class HiveServices
   /// Returns a ValueListenable for listening to changes in the Hive box
   Future<ValueListenable<Box<Info>>> listenable() async
   {
-    var listenableBox = await _infoBoxGetter;
+    final listenableBox = await _infoBoxGetter;
     return listenableBox.listenable();
   }
 }

@@ -18,4 +18,8 @@ abstract class AppRoutes
   static const kProfileView = '/kProfileView';
   
   static const kHiveView = '/kHiveView';
+  static const ktestView = '/ktestView';
+  static const kResponsiveView = '/kResponsiveView';
+
+  static const kPip = '/pip';
 }

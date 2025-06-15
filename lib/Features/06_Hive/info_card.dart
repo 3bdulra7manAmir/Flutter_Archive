@@ -31,7 +31,6 @@ class CustomInfoCard extends StatelessWidget
           children:
           [
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children:
               [
                 SvgPicture.asset(cardFIcon ?? "assets/images/icons/svg/Crown.svg", fit: BoxFit.cover,),
