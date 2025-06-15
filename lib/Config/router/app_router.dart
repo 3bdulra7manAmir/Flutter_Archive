@@ -10,16 +10,23 @@ import 'package:test_area/Features/04_BMB_GoRouter/app_navigator.dart';
 import 'package:test_area/Features/06_Hive/hive_view.dart';
 import 'package:test_area/Features/07_UI_Test/test.dart';
 import 'package:test_area/Features/08_Responsive/screens/responsive.dart';
-import 'package:test_area/Features/09_Pip/presentation/screen/pip_view.dart';
+import 'package:test_area/Features/09_Pip/presentation/screen/pip_android_view.dart';
+
+import '../../Features/09_Pip/presentation/screen/pip_both_view.dart';
 
 abstract class AppRouter
 {
   AppRouter._();
 
   static final router = GoRouter(
-    initialLocation: AppRoutes.kPip,
+    initialLocation: AppRoutes.kResponsiveView,
     routes:
     [
+      GoRoute(
+        path: AppRoutes.kPipAll,
+        name: AppRoutes.kPipAll,
+        builder: (context, state) => const PipAllView(),
+      ),
       GoRoute(
         path: AppRoutes.kPip,
         name: AppRoutes.kPip,

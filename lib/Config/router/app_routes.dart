@@ -22,4 +22,5 @@ abstract class AppRoutes
   static const kResponsiveView = '/kResponsiveView';
 
   static const kPip = '/pip';
+  static const kPipAll = '/pipAll';
 }

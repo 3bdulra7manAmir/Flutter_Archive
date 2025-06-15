@@ -17,8 +17,10 @@ class InfoAdapter extends TypeAdapter<Info> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Info(
-      id: fields[0] as int?,
-      imgPath: fields[1] as String?,
+      id: fields[0] == null ? 0 : fields[0] as int?,
+      imgPath: fields[1] == null
+          ? 'assets/images/icons/svg/Crown.svg'
+          : fields[1] as String?,
       titleText: fields[2] == null ? 'Hill, Hydra' : fields[2] as String?,
       subTitleText: fields[3] == null
           ? "Cut of One Head to more Shall take it's Place"
