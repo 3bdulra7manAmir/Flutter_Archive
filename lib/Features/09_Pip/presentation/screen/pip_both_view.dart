@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../Config/router/app_router.dart';
+import '../../../../Config/router/app_routes.dart';
 import '../controller/pip_controller.dart';
 
 class PipAllView extends StatefulWidget
@@ -12,7 +14,7 @@ class PipAllView extends StatefulWidget
   State<PipAllView> createState() => _PipAllViewState();
 }
 
-class _PipAllViewState extends State<PipAllView>
+class _PipAllViewState extends State<PipAllView> with RouteAware
 {
   final PipController _pipController = PipController();
   bool _isInPip = false;
@@ -35,10 +37,46 @@ class _PipAllViewState extends State<PipAllView>
   }
 
   @override
+  void didChangeDependencies()
+  {
+    super.didChangeDependencies();
+    AppRouter.routeObserver.subscribe(this, ModalRoute.of(context)!);
+  }
+
+  @override
   void dispose()
   {
+    AppRouter.routeObserver.unsubscribe(this);
     _pipController.disposePip();
     super.dispose();
+  }
+
+  @override
+  void didPush() async
+  {
+    await _pipController.initialize();
+    await _pipController.setupPip();
+    setState(() {});
+  }
+
+  @override
+  void didPopNext() async
+  {
+    await _pipController.initialize();
+    await _pipController.setupPip();
+    setState(() {});
+  }
+
+  @override
+  void didPushNext()
+  {
+    _pipController.disposePip();
+  }
+
+  @override
+  void didPop()
+  {
+    _pipController.disposePip();
   }
 
   @override
@@ -58,6 +96,14 @@ class _PipAllViewState extends State<PipAllView>
             Icon(Icons.picture_in_picture_alt, size: 50.w),
             10.verticalSpace,
             const Text("PiP is ready. Minimize or drag app to trigger."),
+            10.verticalSpace,
+            ElevatedButton(
+                onPressed: () async
+                {
+                  AppRouter.router.pushNamed(AppRoutes.kResponsiveView);
+                },
+                child: const Text("Next"),
+              ),
             20.verticalSpace,
             if (_isInPip && !Platform.isAndroid)
               ElevatedButton(
