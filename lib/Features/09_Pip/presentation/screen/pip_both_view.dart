@@ -1,142 +1,74 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:pip/pip.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PipController
+import '../controller/pip_controller.dart';
+
+class PipAllView extends StatefulWidget
 {
-  final Pip _pip = Pip();
-  bool _isInitialized = false;
-
-  Future<void> enterPipMode() async
-  {
-    if (await _pip.isSupported())
-    {
-      if (!_isInitialized)
-      {
-        await _pip.setup(const PipOptions(
-          autoEnterEnabled: true,
-          aspectRatioX: 16,
-          aspectRatioY: 9,
-          preferredContentWidth: 500,
-          preferredContentHeight: 500,
-        ));
-        _isInitialized = true;
-      }
-      if (!await _pip.isActived())
-      {
-        await _pip.start();
-      }
-    }
-  }
-
-  Future<void> exitPipMode() async {
-    if (await _pip.isActived()) {
-      await _pip.stop();
-    }
-  }
-}
-
-class PipAllView extends StatefulWidget {
   const PipAllView({super.key});
 
   @override
   State<PipAllView> createState() => _PipAllViewState();
 }
 
-class _PipAllViewState extends State<PipAllView> with WidgetsBindingObserver {
+class _PipAllViewState extends State<PipAllView>
+{
   final PipController _pipController = PipController();
-  bool _isInPipMode = false;
+  bool _isInPip = false;
 
   @override
   void initState()
   {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    _isInPipMode = true;
+    _pipController.initialize().then((_) async
+    {
+      // Set up but don't start PiP
+      await _pipController.setupPip(); 
+      setState(() {}); // update UI if needed
+    });
+
+    _pipController.onPipStateChanged = (isActive)
+    {
+      setState(() => _isInPip = isActive);
+    };
   }
 
   @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    _isInPipMode = false;
-    _pipController.exitPipMode(); // Ensure PiP stops when leaving the screen
+  void dispose()
+  {
+    _pipController.disposePip();
     super.dispose();
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (!mounted) return;
-
-    if (state == AppLifecycleState.paused) {
-      _pipController.enterPipMode().then((_) {
-        if (mounted) setState(() => _isInPipMode = true);
-      });
-    } else if (state == AppLifecycleState.resumed) {
-      _pipController.exitPipMode().then((_) {
-        if (mounted) setState(() => _isInPipMode = false);
-      });
+  Widget build(BuildContext context)
+  {
+    if (!_pipController.isPipSupported)
+    {
+      return const Scaffold(body: Center(child: Text("PiP not supported")));
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("PiP Demo")),
+      appBar: AppBar(title: const Text("Simple PiP")),
       body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Content that appears in PiP mode
-              Container(
-                width: 300,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Center(
-                  child: Text(
-                    "This content will appear in PiP mode",
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:
+          [
+            Icon(Icons.picture_in_picture_alt, size: 50.w),
+            10.verticalSpace,
+            const Text("PiP is ready. Minimize or drag app to trigger."),
+            20.verticalSpace,
+            if (_isInPip && !Platform.isAndroid)
               ElevatedButton(
-                onPressed: () async {
-                  try {
-                    await _pipController.enterPipMode();
-                    if (mounted) setState(() => _isInPipMode = true);
-                  } catch (e) {
-                    if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Failed to enter PiP: $e")),
-                      );
-                    }
-                  }
+                onPressed: () async
+                {
+                  await _pipController.stopPip();
+                  setState(() => _isInPip = false);
                 },
-                child: const Text("Enter PiP Mode"),
+                child: const Text("Stop PiP"),
               ),
-              if (_isInPipMode)
-                ElevatedButton(
-                  onPressed: () async {
-                    try {
-                      await _pipController.exitPipMode();
-                      if (mounted) setState(() => _isInPipMode = false);
-                    } catch (e) {
-                      if (mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Failed to exit PiP: $e")),
-                        );
-                      }
-                    }
-                  },
-                  child: const Text("Exit PiP Mode"),
-                ),
-            ],
-          ),
+          ],
         ),
       ),
     );
