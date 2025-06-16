@@ -87,34 +87,36 @@ class _PipAllViewState extends State<PipAllView> with RouteAware
       return const Scaffold(body: Center(child: Text("PiP not supported")));
     }
     return Scaffold(
-      appBar: AppBar(title: const Text("Simple PiP")),
+      //appBar: AppBar(title: const Text("Simple PiP")),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:
-          [
-            Icon(Icons.picture_in_picture_alt, size: 50.w),
-            10.verticalSpace,
-            const Text("PiP is ready. Minimize or drag app to trigger."),
-            10.verticalSpace,
-            ElevatedButton(
-                onPressed: () async
-                {
-                  AppRouter.router.pushNamed(AppRoutes.kResponsiveView);
-                },
-                child: const Text("Next"),
-              ),
-            20.verticalSpace,
-            if (_isInPip && !Platform.isAndroid)
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:
+            [
+              Icon(Icons.picture_in_picture_alt, size: 50.w),
+              10.verticalSpace,
+              const Text("PiP is ready. Minimize or drag app to trigger."),
+              10.verticalSpace,
               ElevatedButton(
-                onPressed: () async
-                {
-                  await _pipController.stopPip();
-                  setState(() => _isInPip = false);
-                },
-                child: const Text("Stop PiP"),
-              ),
-          ],
+                  onPressed: () async
+                  {
+                    AppRouter.router.pushNamed(AppRoutes.kResponsiveView);
+                  },
+                  child: const Text("Next"),
+                ),
+              20.verticalSpace,
+              if (_isInPip && !Platform.isAndroid)
+                ElevatedButton(
+                  onPressed: () async
+                  {
+                    await _pipController.stopPip();
+                    setState(() => _isInPip = false);
+                  },
+                  child: const Text("Stop PiP"),
+                ),
+            ],
+          ),
         ),
       ),
     );
